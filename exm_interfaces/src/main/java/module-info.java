@@ -3,7 +3,6 @@ module com.example.exm_interfaces {
     requires javafx.fxml;
     requires java.persistence;
     requires lombok;
-    requires org.hibernate.orm.core;
     requires java.naming;
     requires java.sql;
     requires java.base;

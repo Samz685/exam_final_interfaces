@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d9295755-9c90-4467-9dc0-0678b88f8837" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/stilo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../java/com/example/exm_interfaces/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../java/com/example/exm_interfaces/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../java/com/example/exm_interfaces/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../java/com/example/exm_interfaces/PantallaNotas.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../java/com/example/exm_interfaces/PantallaNotas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../java/com/example/exm_interfaces/hibernate.cfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../java/com/example/exm_interfaces/models/Alumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../java/models/Alumno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pantalla_notas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/pantalla_notas.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../../../.." />
+  </component>
+  <component name="ProjectId" id="2MxwZNzth244HQ7gnGE7XvtWpwp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Syzer/OneDrive/Documentos/GitHub/exam_final_interfaces/exm_interfaces/src/main/resources/com/example/exm_interfaces"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d9295755-9c90-4467-9dc0-0678b88f8837" name="Changes" comment="" />
+      <created>1678722595699</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678722595699</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -4,7 +4,7 @@
  */
 package com.example.exm_interfaces;
 
-import com.example.exm_interfaces.models.Alumno;
+import models.Alumno;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -14,7 +14,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
@@ -34,8 +33,6 @@ public class PantallaNotas implements Initializable {
     private MenuItem menuSalir;
     @FXML
     private TextField textNombre;
-    @FXML
-    private Button btnEstadistica;
     @FXML
     private Label detalle;
     @FXML
@@ -75,13 +72,19 @@ public class PantallaNotas implements Initializable {
     private TableColumn<Alumno, Double> cEIE;
     @FXML
     private TableColumn<Alumno, Double> cHLC;
+    @FXML
+    private Button btnAdd;
+
+    ArrayList<Alumno> alumnos = new ArrayList<>();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> items = FXCollections.observableArrayList();
+
+
+        alumnosIniciales();
 
 
         cNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
@@ -93,27 +96,24 @@ public class PantallaNotas implements Initializable {
         cPSP.setCellValueFactory(new PropertyValueFactory("AD"));
         cEIE.setCellValueFactory(new PropertyValueFactory("SGE"));
         cHLC.setCellValueFactory(new PropertyValueFactory("SGE"));
-        
-
-      
-        
 
         actualizarTabla();
     }    
 
     
         private void actualizarTabla() {
-        ArrayList<Alumno> alumnos = new ArrayList<>();
-        
+        tabla.getItems().clear();
+        tabla.getItems().addAll(alumnos);
+
+    }
+
+    private void alumnosIniciales() {
         Alumno a1 = new Alumno("Sam", "Galvan", 8.8, 9.5, 10.0, 7.0, 10.0, 8.5, 10.0);
         alumnos.add(a1);
         Alumno a2 = new Alumno("Pepito", "Perez", 9.8, 7.5,5.0, 8.0, 10.0, 8.5, 10.0);
         alumnos.add(a2);
         Alumno a3 = new Alumno("Juanito", "Juarez", 5.8, 5.5, 4.0, 6.0, 10.0, 8.5, 10.0);
         alumnos.add(a3);
-        tabla.getItems().clear();
-        tabla.getItems().addAll(alumnos);
-
     }
 
     @FXML
@@ -124,5 +124,28 @@ public class PantallaNotas implements Initializable {
     @FXML
     private void mostrarCarta(MouseEvent event) {
     }
-    
+
+    @FXML
+    public void newAlumno(ActionEvent actionEvent) {
+
+        Alumno alumno = new Alumno();
+        if(textNombre.getText() !=null || textApellidos.getText() != null || textAD.getText() != null
+        || textSGE.getText() != null || textDI.getText() != null || textDI.getText() != null)
+        alumno.setNombre(textNombre.getText());
+        alumno.setApellidos(textApellidos.getText());
+        alumno.setAD(Double.valueOf(textAD.getText()));
+        alumno.setSGE(Double.valueOf(textSGE.getText()));
+        alumno.setDI(Double.valueOf(textDI.getText()));
+        alumno.setPMDM(Double.valueOf(textPMDM.getText()));
+        alumno.setPSP(Double.valueOf(textPSP.getText()));
+        alumno.setEIE (Double.valueOf(textEIE .getText()));
+        alumno.setHLC(Double.valueOf(textHLC.getText()));
+
+        alumnos.add(alumno);
+        actualizarTabla();
+
+
+
+
+    }
 }
