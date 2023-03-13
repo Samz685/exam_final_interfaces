@@ -4,7 +4,7 @@ package models;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
-
+import java.util.ArrayList;
 
 
 @NoArgsConstructor
@@ -21,6 +21,35 @@ public class Alumno implements Serializable {
     Double PSP;
     Double EIE;
     Double HLC;
+
+
+    public Double media( ){
+
+        Double resultado = (AD+SGE+DI+PMDM+PSP+EIE+HLC)/7;
+        resultado = Math.round(resultado * 100.0) / 100.0;
+        return resultado;
+    }
+
+    public int numSuspendidas() {
+        int contador = 0;
+        ArrayList<Double> asignaturas = new ArrayList<>();
+        asignaturas.add(AD);
+        asignaturas.add(SGE);
+        asignaturas.add(DI);
+        asignaturas.add(PMDM);
+        asignaturas.add(PSP);
+        asignaturas.add(EIE);
+        asignaturas.add(HLC);
+
+        for (Double asignatura : asignaturas) {
+            if (asignatura < 5) {
+                contador++;
+            }
+        }
+
+        return contador;
+    }
+
 
     public String getNombre() {
         return nombre;
@@ -93,6 +122,8 @@ public class Alumno implements Serializable {
     public void setHLC(Double HLC) {
         this.HLC = HLC;
     }
+
+
 
     @Override
     public String toString() {

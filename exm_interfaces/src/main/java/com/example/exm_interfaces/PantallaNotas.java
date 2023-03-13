@@ -4,6 +4,8 @@
  */
 package com.example.exm_interfaces;
 
+import javafx.event.Event;
+import javafx.scene.control.*;
 import models.Alumno;
 
 import java.net.URL;
@@ -15,12 +17,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -78,6 +74,7 @@ public class PantallaNotas implements Initializable {
     private Button btnAdd;
 
     ArrayList<Alumno> alumnos = new ArrayList<>();
+    Alumno alumnoActual = new Alumno();
 
     /**
      * Initializes the controller class.
@@ -92,8 +89,8 @@ public class PantallaNotas implements Initializable {
         cApellidos.setCellValueFactory(new PropertyValueFactory("apellidos"));
         cAD.setCellValueFactory(new PropertyValueFactory("AD"));
         cSGE.setCellValueFactory(new PropertyValueFactory("SGE"));
-        cDI.setCellValueFactory(new PropertyValueFactory("nombre"));
-        cPMDM.setCellValueFactory(new PropertyValueFactory("apellidos"));
+        cDI.setCellValueFactory(new PropertyValueFactory("DI"));
+        cPMDM.setCellValueFactory(new PropertyValueFactory("PMDM"));
         cPSP.setCellValueFactory(new PropertyValueFactory("AD"));
         cEIE.setCellValueFactory(new PropertyValueFactory("SGE"));
         cHLC.setCellValueFactory(new PropertyValueFactory("SGE"));
@@ -115,7 +112,7 @@ public class PantallaNotas implements Initializable {
         alumnos.add(a1);
         Alumno a2 = new Alumno("Pepito", "Perez", 9.8, 7.5, 5.0, 8.0, 10.0, 8.5, 10.0);
         alumnos.add(a2);
-        Alumno a3 = new Alumno("Juanito", "Juarez", 5.8, 5.5, 4.0, 6.0, 10.0, 8.5, 10.0);
+        Alumno a3 = new Alumno("Juanito", "Juarez", 5.8, 4.5, 4.0, 6.0, 10.0, 8.5, 10.0);
         alumnos.add(a3);
     }
 
@@ -124,13 +121,12 @@ public class PantallaNotas implements Initializable {
     }
 
 
-    @FXML
+    @Deprecated
     private void mostrarCarta(MouseEvent event) {
     }
 
     @FXML
     public void newAlumno(ActionEvent actionEvent) {
-
         Alumno alumno = new Alumno();
 
         //Aqui nos aseguramos de que los cajetines no están vacios
@@ -167,20 +163,51 @@ public class PantallaNotas implements Initializable {
                 alumno.setPSP(Double.valueOf(textPSP.getText()));
                 alumno.setEIE(Double.valueOf(textEIE.getText()));
                 alumno.setHLC(Double.valueOf(textHLC.getText()));
-
                 alumnos.add(alumno);
                 actualizarTabla();
-
             } else {
                 detalle.setText("Las notas tienen que tener un valor entre 0 y 10");
-
             }
-
-
         } else {
             detalle.setText("No puedes dejar ningun campo vacio");
 
         }
-        
+    }
+
+    private void infoAlumno() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Información Alumno");
+        alert.setHeaderText(alumnoActual.getNombre()+" "+alumnoActual.getApellidos());
+        if (!suspendida()){
+            alert.setContentText("Nota media: "+alumnoActual.media()+ "\n" +
+                                "TODAS LAS ASIGNATURAS APROBADAS");
+        } else{
+            alert.setContentText("Nota media: "+alumnoActual.media()+ "\n" +
+                    "Asignaturas suspensas: " +alumnoActual.numSuspendidas());
+
+        }
+
+
+        alert.showAndWait();
+
+    }
+
+    @FXML
+    public void mostrarAlumno(MouseEvent event) {
+        alumnoActual = tabla.getSelectionModel().getSelectedItem();
+        System.out.println(alumnoActual.media());
+        System.out.println(alumnoActual.numSuspendidas());
+        System.out.println(alumnoActual.toString());
+        System.out.println(suspendida());
+        infoAlumno();
+    }
+
+    public Boolean suspendida() {
+
+        if (alumnoActual.numSuspendidas() == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

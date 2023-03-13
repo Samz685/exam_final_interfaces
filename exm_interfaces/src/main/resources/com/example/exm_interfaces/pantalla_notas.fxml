@@ -86,7 +86,7 @@
       </VBox>
    </bottom>
    <center>
-      <TableView id="tabla" fx:id="tabla" minHeight="-Infinity" onMouseClicked="#mostrarCarta" prefHeight="300.0" prefWidth="615.0" stylesheets="@stilo.css" BorderPane.alignment="TOP_CENTER">
+      <TableView id="tabla" fx:id="tabla" minHeight="-Infinity" onMouseClicked="#mostrarAlumno" prefHeight="300.0" prefWidth="615.0" stylesheets="@stilo.css" BorderPane.alignment="TOP_CENTER">
         <columns>
           <TableColumn fx:id="cNombre" prefWidth="139.0" text="Nombre" />
             <TableColumn fx:id="cApellidos" prefWidth="33.0" text="Apellidos" />
