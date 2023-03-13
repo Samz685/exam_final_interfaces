@@ -9,8 +9,11 @@ import javafx.scene.control.*;
 import models.Alumno;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  * FXML Controller class
@@ -75,6 +79,9 @@ public class PantallaNotas implements Initializable {
 
     ArrayList<Alumno> alumnos = new ArrayList<>();
     Alumno alumnoActual = new Alumno();
+    @FXML
+    private Button btnInforme;
+
 
     /**
      * Initializes the controller class.
@@ -96,6 +103,8 @@ public class PantallaNotas implements Initializable {
         cHLC.setCellValueFactory(new PropertyValueFactory("SGE"));
 
         actualizarTabla();
+
+
     }
 
 
@@ -208,6 +217,21 @@ public class PantallaNotas implements Initializable {
             return false;
         } else {
             return true;
+        }
+    }
+
+    @FXML
+    public void generarInforme(ActionEvent actionEvent) {
+
+        try {
+            Informe.showNotas();
+        } catch (JRException | ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(PantallaNotas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            Informe.pdfReportNotas();
+        } catch (JRException | ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(PantallaNotas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

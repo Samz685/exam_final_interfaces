@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane minHeight="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exm_interfaces.PantallaNotas">
+<BorderPane minHeight="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exm_interfaces.PantallaNotas">
    <bottom>
       <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
@@ -20,14 +20,17 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                     <children>
+
                         <Label prefHeight="17.0" prefWidth="81.0" text="Nombre" />
                         <Label text="Apellidos" GridPane.rowIndex="1" />
-                        <TextField fx:id="textNombre" GridPane.columnIndex="1" />
+                        <TextField fx:id="textNombre" GridPane.columnIndex="1">
+                           </TextField>
                         <TextField fx:id="textApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#newAlumno" prefHeight="50.0" prefWidth="150.0" text="Añadir" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                     </children>
+                     <Button fx:id="btnInforme" layoutX="84.0" layoutY="130.0" mnemonicParsing="false" onAction="#generarInforme" prefHeight="50.0" prefWidth="150.0" text="Generar Informe" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
                      <padding>
                         <Insets right="10.0" />
                      </padding>
