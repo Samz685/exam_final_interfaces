@@ -5,9 +5,11 @@
 package com.example.exm_interfaces;
 
 import models.Alumno;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -86,7 +88,6 @@ public class PantallaNotas implements Initializable {
 
         alumnosIniciales();
 
-
         cNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
         cApellidos.setCellValueFactory(new PropertyValueFactory("apellidos"));
         cAD.setCellValueFactory(new PropertyValueFactory("AD"));
@@ -98,19 +99,21 @@ public class PantallaNotas implements Initializable {
         cHLC.setCellValueFactory(new PropertyValueFactory("SGE"));
 
         actualizarTabla();
-    }    
+    }
 
-    
-        private void actualizarTabla() {
+
+    //Aqui alimentamos la tabla con el array que vamos rellenando
+    private void actualizarTabla() {
         tabla.getItems().clear();
         tabla.getItems().addAll(alumnos);
 
     }
 
+    //Aqui introducimos los alumnos por defecto en el array
     private void alumnosIniciales() {
         Alumno a1 = new Alumno("Sam", "Galvan", 8.8, 9.5, 10.0, 7.0, 10.0, 8.5, 10.0);
         alumnos.add(a1);
-        Alumno a2 = new Alumno("Pepito", "Perez", 9.8, 7.5,5.0, 8.0, 10.0, 8.5, 10.0);
+        Alumno a2 = new Alumno("Pepito", "Perez", 9.8, 7.5, 5.0, 8.0, 10.0, 8.5, 10.0);
         alumnos.add(a2);
         Alumno a3 = new Alumno("Juanito", "Juarez", 5.8, 5.5, 4.0, 6.0, 10.0, 8.5, 10.0);
         alumnos.add(a3);
@@ -129,23 +132,55 @@ public class PantallaNotas implements Initializable {
     public void newAlumno(ActionEvent actionEvent) {
 
         Alumno alumno = new Alumno();
-        if(textNombre.getText() !=null || textApellidos.getText() != null || textAD.getText() != null
-        || textSGE.getText() != null || textDI.getText() != null || textDI.getText() != null)
-        alumno.setNombre(textNombre.getText());
-        alumno.setApellidos(textApellidos.getText());
-        alumno.setAD(Double.valueOf(textAD.getText()));
-        alumno.setSGE(Double.valueOf(textSGE.getText()));
-        alumno.setDI(Double.valueOf(textDI.getText()));
-        alumno.setPMDM(Double.valueOf(textPMDM.getText()));
-        alumno.setPSP(Double.valueOf(textPSP.getText()));
-        alumno.setEIE (Double.valueOf(textEIE .getText()));
-        alumno.setHLC(Double.valueOf(textHLC.getText()));
 
-        alumnos.add(alumno);
-        actualizarTabla();
+        //Aqui nos aseguramos de que los cajetines no están vacios
+        if (!textNombre.getText().isEmpty()
+                && !textApellidos.getText().isEmpty()
+                && !textAD.getText().isEmpty()
+                && !textSGE.getText().isEmpty()
+                && !textDI.getText().isEmpty()
+                && !textPMDM.getText().isEmpty()
+                && !textPSP.getText().isEmpty()
+                && !textEIE.getText().isEmpty()
+                && !textHLC.getText().isEmpty()) {
+
+            String nombre = textNombre.getText();
+            String apellidos = textApellidos.getText();
+            Double AD = Double.valueOf(textAD.getText());
+            Double SGE = Double.valueOf(textSGE.getText());
+            Double DI = Double.valueOf(textDI.getText());
+            Double PMDM = Double.valueOf(textPMDM.getText());
+            Double PSP = Double.valueOf(textPSP.getText());
+            Double EIE = Double.valueOf(textEIE.getText());
+            Double HLC = Double.valueOf(textHLC.getText());
+
+            //Aqui nos aseguramos de que los valores introducidos sean entre 0 y 10
+            if (AD >= 0 && AD <= 10 && SGE >= 0 && SGE <= 10 && DI >= 0 && DI <= 10
+                    && PMDM >= 0 && PMDM <= 10 && PSP >= 0 && PSP <= 10 && EIE >= 0 && EIE <= 10
+                    && HLC >= 0 && HLC <= 10) {
+                alumno.setNombre(textNombre.getText());
+                alumno.setApellidos(textApellidos.getText());
+                alumno.setAD(Double.valueOf(textAD.getText()));
+                alumno.setSGE(Double.valueOf(textSGE.getText()));
+                alumno.setDI(Double.valueOf(textDI.getText()));
+                alumno.setPMDM(Double.valueOf(textPMDM.getText()));
+                alumno.setPSP(Double.valueOf(textPSP.getText()));
+                alumno.setEIE(Double.valueOf(textEIE.getText()));
+                alumno.setHLC(Double.valueOf(textHLC.getText()));
+
+                alumnos.add(alumno);
+                actualizarTabla();
+
+            } else {
+                detalle.setText("Las notas tienen que tener un valor entre 0 y 10");
+
+            }
 
 
+        } else {
+            detalle.setText("No puedes dejar ningun campo vacio");
 
-
+        }
+        
     }
 }
