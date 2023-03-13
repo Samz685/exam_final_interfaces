@@ -21,7 +21,7 @@ public class Informe {
 
     public static void showNotas() throws JRException, ClassNotFoundException, SQLException {
 
-        String report = "notas.jasper";
+        String report = "reporte_notas.jasper";
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(
                 report, 
@@ -43,7 +43,7 @@ public class Informe {
 
     public static void pdfReportNotas() throws JRException, ClassNotFoundException, SQLException {
 
-        String report = "notas.jasper";
+        String report = "reporte_notas.jasper";
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(
                 report, 
@@ -70,126 +70,5 @@ public class Informe {
         System.out.print("Done!");
     }
 
-
-        
-    
-    
-//    public static void showReportPedidosHoy(Date fecha) throws JRException, ClassNotFoundException, SQLException {
-//
-//
-//        String report = "ReportePedidosHoy.jasper";
-//        HashMap hm = new HashMap();
-//
-//        hm.put("fechaParam", fecha);
-//
-//        JasperPrint jasperPrint = JasperFillManager.fillReport(
-//                report,
-//                hm,
-//                JdbcUtil.getConnection()
-//        );
-//
-//        JRViewer viewer = new JRViewer(jasperPrint);
-//
-//        JFrame frame = new JFrame("Comandas");
-//        frame.getContentPane().add(viewer);
-//        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        frame.pack();
-//        frame.setSize(800, 1000);
-//        frame.setVisible(true);
-//
-//        System.out.print("Done!");
-//    }
-//
-//    public static void pdfReportPedidosHoy(Date fecha) throws JRException, ClassNotFoundException, SQLException {
-//
-//        String report = "ReportePedidosHoy.jasper";
-//        HashMap hm = new HashMap();
-//        hm.put("fechaParam", fecha);
-//
-//        JasperPrint jasperPrint = JasperFillManager.fillReport(
-//                report,
-//                hm,
-//                JdbcUtil.getConnection()
-//        );
-//
-//        JFileChooser chooser = new JFileChooser();
-//        int option = chooser.showSaveDialog(null);
-//        if (option == JFileChooser.APPROVE_OPTION) {
-//            File selectedFile = chooser.getSelectedFile();
-//            String path = selectedFile.getAbsolutePath();
-//            if (!path.endsWith(".pdf")) {
-//                path += ".pdf";
-//            }
-//
-//            JRPdfExporter exp = new JRPdfExporter();
-//            exp.setExporterInput(new SimpleExporterInput(jasperPrint));
-//            exp.setExporterOutput(new SimpleOutputStreamExporterOutput(path));
-//            SimplePdfExporterConfiguration conf = new SimplePdfExporterConfiguration();
-//            exp.setConfiguration(conf);
-//            exp.exportReport();
-//        }
-//
-//        System.out.print("Done!");
-//    }
-//
-//    public static void showReportPedidosPeriodo(Date fecha1, Date fecha2) throws JRException, ClassNotFoundException, SQLException {
-//
-//
-//        String report = "ReportePedidosPeriodo.jasper";
-//        HashMap hm = new HashMap();
-//
-//        hm.put("fechaParam", fecha1);
-//        hm.put("fechaParam2", fecha2);
-//
-//        JasperPrint jasperPrint = JasperFillManager.fillReport(
-//                report,
-//                hm,
-//                JdbcUtil.getConnection()
-//        );
-//
-//        JRViewer viewer = new JRViewer(jasperPrint);
-//
-//        JFrame frame = new JFrame("Reporte Comandas Periodo");
-//        frame.getContentPane().add(viewer);
-//        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        frame.pack();
-//        frame.setSize(800, 1000);
-//        frame.setVisible(true);
-//
-//        System.out.print("Done!");
-//    }
-//
-//    public static void pdfReportPedidosPeriodo(Date fecha1, Date fecha2) throws JRException, ClassNotFoundException, SQLException {
-//
-//        String report = "ReportePedidosPeriodo.jasper";
-//        HashMap hm = new HashMap();
-//        hm.put("fechaParam", fecha1);
-//        hm.put("fechaParam2", fecha2);
-//
-//        JasperPrint jasperPrint = JasperFillManager.fillReport(
-//                report,
-//                hm,
-//                JdbcUtil.getConnection()
-//        );
-//
-//        JFileChooser chooser = new JFileChooser();
-//        int option = chooser.showSaveDialog(null);
-//        if (option == JFileChooser.APPROVE_OPTION) {
-//            File selectedFile = chooser.getSelectedFile();
-//            String path = selectedFile.getAbsolutePath();
-//            if (!path.endsWith(".pdf")) {
-//                path += ".pdf";
-//            }
-//
-//            JRPdfExporter exp = new JRPdfExporter();
-//            exp.setExporterInput(new SimpleExporterInput(jasperPrint));
-//            exp.setExporterOutput(new SimpleOutputStreamExporterOutput(path));
-//            SimplePdfExporterConfiguration conf = new SimplePdfExporterConfiguration();
-//            exp.setConfiguration(conf);
-//            exp.exportReport();
-//        }
-//
-//        System.out.print("Done!");
-//    }
 
 }
